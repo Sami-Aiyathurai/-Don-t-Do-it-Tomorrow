@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    To Do List
+{% endblock %}
+
+{% block main %}
+<div class="sectioner-header text-center">
+  <h1>To Do List</h1>
+</div>
+<span class="line"></span>
+<table style='margin-top: 30px' class="table">
+    <thead>
+      <tr>
+        <th scope="col"> Title</th>
+        <th scope="col"> Project</th>
+        <th scope="col"> Completion Status</th>
+        <th scope="col"> Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in tasks %}
+      <tr>
+        <td>  {{ row["title"] }}  </td>
+        <td>  {{ row["project"] }}  </td>
+        <td>  {{ row["status"] }}  </td>
+        <td>  {{ row["dueDate"] }}  </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <script>
+    $(function(){
+    $("tr:not(:first)").each(function(){
+      var col_status = $(this).find("td:eq(2)").text();
+      var col_due = $(this).find("td:eq(3)").text();
+      const date = new Date();
+      var col_date = new Date(col_due);
+      if (date > col_date){
+        $(this).addClass('pastdue');
+      } else if ($.trim(col_status) == "Not Started"){
+        $(this).addClass('notstarted');  //the selected class colors the row green//
+      } else if($.trim(col_status) == "In Progress"){
+        $(this).addClass('inprogress');
+      }
+    });
+  });
+  </script>
+{% endblock %}

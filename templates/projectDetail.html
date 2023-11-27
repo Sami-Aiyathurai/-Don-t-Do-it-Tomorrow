@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Project Details
+{% endblock %}
+
+{% block main %}
+
+<div class="sectioner-header text-center">
+  <h1>{{project}}</h1>
+</div>
+<span class="line"></span>
+<h4>{{details[0]["description"]}}</h4>
+<p>Project is {{details[0]["status"]}} and is due on {{details[0]["dueDate"]}}</p>
+
+<table style='margin-top: 30px' class="table">
+    <thead>
+      <tr>
+        <th scope="col"> Title</th>
+        <th scope="col"> Completion Status</th>
+        <th scope="col"> Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in tasks %}
+      <tr>
+        <td>  {{ row["title"] }}  </td>
+        <td>  {{ row["status"] }}  </td>
+        <td>  {{ row["dueDate"] }}  </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+<div class="row">
+  <div class="col">
+    <h5>Edit or Create Task</h5>
+  </div>
+  <div class="col">
+    <h5>Edit Project</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <form action="/editProject" method="post">
+      <input type = "hidden" name = "project" value = "{{project}}" />
+        <select class="input-group mx-auto w-auto" name="task">
+            {% for row in tasks %}
+              <option value="{{row['title']}}"> {{row["title"]}} </option>
+            {% endfor %}
+            <option selected value = create>Create Task</option>
+        </select>
+        <div class="mb-3">
+          <button class="btn about-btn" type="submit">Submit</button>
+        </div>
+    </form>
+  </div>
+  <div class="col">
+    <form action="/updateProject" method="get">
+      <input type = "hidden" name = "project" value = "{{project}}" />
+      <button class="btn about-btn" type="submit">Edit Project</button>
+    </form>
+  </div>
+</div>
+<script>
+  $(function(){
+  $("tr:not(:first)").each(function(){
+    var col_status = $(this).find("td:eq(1)").text();
+    var col_due = $(this).find("td:eq(2)").text();
+      const date = new Date();
+      var col_date = new Date(col_due);
+    if (date > col_date){
+      if($.trim(col_status) != "Completed"){
+        $(this).addClass('pastdue');
+      } else {
+      $(this).addClass('completed');
+    }
+    } else if ($.trim(col_status) == "Not Started"){
+      $(this).addClass('notstarted');  //the selected class colors the row green//
+    } else if($.trim(col_status) == "In Progress"){
+      $(this).addClass('inprogress');
+    } else {
+      $(this).addClass('completed');
+    }
+  });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Projects
+{% endblock %}
+
+{% block main %}
+    <form action="/projects" method="post">
+        <div class="mb-3">
+            <div class="sectioner-header text-center">
+                <h3>Select Project or create Project</h3>
+            </div>
+            <span class="line"></span>
+            <select class="input-group mx-auto w-auto" name="project">
+                <option disabled selected>Project Name</option>
+                {% for title in projs %}
+                <option value="{{title}}"> {{title}} </option>
+                {% endfor %}
+                <option value = create>Create New</option>
+            </select>
+        </div>
+        <button class=" btn about-btn" type="submit">Select</button>
+    </form>
+{% endblock %}

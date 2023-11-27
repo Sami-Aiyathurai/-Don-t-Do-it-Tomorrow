@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create a task
+{% endblock %}
+
+{% block main %}
+    <form action="/addTask" method="post">
+        <div class="sectioner-header text-center">
+            <h1>{{project}}</h1>
+            <input type = "hidden" name = "project" value = "{{project}}" />
+          </div>
+          <span class="line"></span>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="input-group mx-auto w-auto" id="title" name="title" placeholder="Task Name" type="text">
+        </div>
+        <div class="container">
+            <div class='input-group date mx-auto w-auto' id='picker'>
+                <input type='text' class="form-control mx-auto w-auto" name="duedate" placeholder="Due Date"/>
+                <span class="input-group-append">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <select class="input-group mx-auto w-auto" name="status">
+            <option selected>Not Started</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+        </select>
+        <button class="btn about-btn" type="submit">Submit</button>
+    </form>
+    <script type="text/javascript">
+        $(function () {
+            $('#picker').datetimepicker();
+        });
+     </script>
+{% endblock %}

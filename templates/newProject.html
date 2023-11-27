@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Project
+{% endblock %}
+
+{% block main %}
+    <form action="/newproject" method="post">
+        <div class="mb-3">
+            <h4>Project Name</h4>
+            <input autocomplete="off" autofocus class="input-group mx-auto w-auto" name="title" placeholder="Title" type="text">
+        </div>
+        <div class="container">
+            <h4>Project Due Date</h4>
+            <div class='input-group date mx-auto w-auto' id='picker'>
+                <input type='text' class="form-control mx-auto w-auto" name="duedate" placeholder="Due Date"/>
+                <span class="input-group-append">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <h4>Project Description</h4>
+            <textarea autocomplete="off" autofocus class="form-input w-100" id="description" name="description" placeholder="Description" type="text"></textarea>
+        </div>
+        <select class="input-group mx-auto w-auto" name="status">
+            <option>Not Started</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+        </select>
+        <button class="btn about-btn" type="submit">Submit</button>
+    </form>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#picker').datetimepicker();
+        });
+     </script>
+{% endblock %}

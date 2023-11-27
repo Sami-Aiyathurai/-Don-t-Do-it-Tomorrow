@@ -1,2 +1,27 @@
-# -Don-t-Do-it-Tomorrow
-This was my final for Harvard cs50 that I am editing and improving
+# [Don't] Do It Tomorrow
+#### Video Demo:  https://youtu.be/SfBhMywx1EA
+#### Description:
+
+Welcome to \[Don't\] Do It Tomorrow! My neurdivergent friendly taskmanager. I myself am neurodivergent and I often struggle with keeping track of what I have to do when and I find that normal task managers are overwhelming. So I decided to create this. Now I am in no way claiming that the design choices I made to make this taskmanager neurodivergent friendly for me will work for every person who is neurodivergent.
+Every person has their own needs when it comes to keeping themselves organized!
+
+I developed this taskmanger with the idea of keeping track of projects versus keeping track of tasks. A project is a larger goal or project that will require several small "tasks" to accomplish. For example, I could have a research paper for a class due in a week by 11:59pm. The project would be the completion of the research paper and to complete it one has to complete several small tasks like "Pick a topic," "Go to library and look for sources", "Draft thesis statment", "Write draft" and "Edit draft."
+
+With this taskmanager, every user can make any number of projects and give each project a duedate. Then for each project, the user can make any number of smaller tasks, each with their own due date that must be completed before they can mark the full project as completed. The due dates for both projects and tasks are datetime objects so that a user can specify what task should be done first based on the time it is due.
+
+By going to the projects page, the user can select one of the projects or choose to make a new one. If they wish to make a new one, then the user simply needs to fill out the title, description, due date and status of the project and submit where they automatically redirected to create their first task for that project. Tada! The user has their first project and the first task for that project. The user is then directed to the projectdetails page. The Project Details page has the most amount of information and actions for a user. The Project information is displayed along with a table of all of the tasks. The tasks are color coded with different shades of purple based on their status and if their due date has passed. A user can also look over their make a new task, update a current task and edit the project itself. When editing a project or updating a task the user cannot rename the task or project for simplicities sake but they can change the status of the project/task and also change its due date. If a project has the status of "Not Started" and the user updates the status of a task from "Not Started," then the status of the project is automatically updated to be "In progress." However, a user cannot mark a project as complete unless every task for the project has also been marked as complete. This was done to prevent cheating and markinga project as done when it is not!
+
+However, sometimes the project detail page is a little overwhelming so when a user first logs in they are greeted by a message on the index page that lists the task and project with the soonest due date. I made this feature for those, who like me sometimes get overwhelmed if looking at the entire list of what needs to be done. This way a user only sees the task that needs to be done first and they can compartmentalize.
+
+For example, if we return to the research paper, say I have my thesis and all of my sources but I am getting overwhelmed by writing the draft, the paper is due at 11:59pm tonight and it is currently 10am. I can set the project "Write Resarch Paper" to be due date for 11:59pm tonight and make new tasks to break up the process of writing the draft. For example, "Draft introduction" is due at 11:45 am, "Draft conclusion" is due at 1:30pm, "Draft body" is due at 4:30 pm and "Print draft and edit" is due at 10pm. I am aware that I have all of the separate tasks that need to be done, but when I log in the only thing I see is "Draft Introduction" is due at 11:45am and "Write Research Paper" and it is easer for me to avoid getting overwhelmed by all of the tasks for "Write Research Paper"
+
+The next important feature is the todo list. This page lists all tasks across all projects in order of due date and time. It is easy for someone who is neurodivergent to hyperfixate on a single project and complete all of the work for that project while forgetting about all of the tasks for any other projects. Like with the project details page, the tasks are color coded by their status and if it is past their due date and they have not been marked as complete they turn dark purple. Try to avoid that! By listing all of the tasks and all of the projects by due date, the todo list can serve as a good reminder of the tasks for all of projects while allowing the user to focus only on what is due soon.
+
+One again returning to my "Write Research Paper" example, lets say I have started writing and the draft is going well. I am meeting all of my individual task due times and by 1pm I am actually going faster than my planned due times. However, I forgot that the form for studying abroad is due at 3:30pm. When I go to check the todo list, I will see the "Draft Conclusion" task due at 1:30pm, the "Submit study abroad form" task due at 3:30pm and then the "Draft Body" task due at 4:30pm. Whew! I forgot about the study abroad form! I'll spend an hour finishing it now and will submit it before 3:30 before going back to writing my research paper to reach the "Draft Body" task due time of 4:30pm.
+
+
+My neurodivergent friendly taskmanager is not perfect by any means and will not work for everyone but I hope it is helpful for at least some!
+
+
+
+

@@ -1,0 +1,63 @@
+test user: Naruto
+    username: naruto212
+    name: naruto
+    password: konoha
+
+test project:
+    title: test project
+    description: purely for testing
+    duedate: 12/30/23
+
+
+Test User: Luffy
+    username Pirate King
+    name: Luffy
+    password: strawhat
+
+    Test projects:
+        title: Complete cs50
+        description: get cs50 final project to a good ending and submit
+        duedate: 11/24/23
+
+            Test task:
+                title: Trouble shoot
+                duedate: 11/21/23
+
+            Test task:
+                title: Project page
+                duedate: 11/21/23
+
+            Test task:
+                title: Make header look nice
+                duedate: 11/21/23
+
+            Test task:
+                title: Fix input boxes
+                duedate: 11/22/23
+
+    Test projects:
+        title: Start Algorithms Course
+        description: find an algorithms course on either coursera or edx and begin
+        duedate: 12/30/23
+
+            Test task:
+                title: research edx course
+                duedate: 11/27/23
+
+            Test task:
+                title: research coursera course
+                duedate: 11/30/23
+
+            Test task:
+                title: choose course and register
+                duedate: 12/05/23
+
+
+CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, name TEXT NOT NULL, hash TEXT NOT NULL);
+CREATE TABLE sqlite_sequence(name,seq);
+CREATE TABLE projects(user_id NUMERIC NOT NULL, dueDate NUMERIC NOT NULL, status TEXT NOT NULL DEFAULT 'Not started', title TEXT NOT NULL, description TEXT, project_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(user_id) REFERENCES users(id));
+CREATE TABLE tasks (user_id NUMERIC NOT NULL, project_id NUMERIC NOT NULL, title TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'Not started', dueDate NUMERIC NOT NULL, FOREIGN KEY(user_id) REFERENCES users(id), FOREIGN KEY(project_id) REFERENCES projects(project_id));
+
+db.execute("SELECT description, status, dueDate FROM projects WHERE user_id = ? AND project_id = ?", session["user_id"], proj_id)
+
+

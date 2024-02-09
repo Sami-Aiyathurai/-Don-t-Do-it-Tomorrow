@@ -2,19 +2,18 @@ import os
 import sys
 from datetime import datetime, date
 
+
 from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required
 
 # Configure application
 app = Flask(__name__)
 
-# Custom filter
-app.jinja_env.filters["usd"] = usd
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -23,6 +22,7 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///taskmanager.db")
+
 #make taskmanager database
 
 
@@ -186,7 +186,6 @@ def login():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
         # Ensure username was submitted
         if not request.form.get("username"):
             return apology("must provide username", 403)
@@ -204,7 +203,6 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
-
         # Redirect user to home page
         return redirect("/")
 
@@ -251,7 +249,6 @@ def projects():
 @login_required
 def editProject():
     """Display all projects"""
-    user_projs = user_projects()
     id = session["user_id"]
     if request.method == "POST":
         # Ensure username was submitted
@@ -320,7 +317,6 @@ def todolist():
 
 
 def user_projects():
-    user_id = session["user_id"]
     projs = []
     query = db.execute("SELECT title FROM projects WHERE user_id = ?", session["user_id"])
     for q in query:
